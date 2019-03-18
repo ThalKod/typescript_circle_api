@@ -1,22 +1,20 @@
-import express from 'express';
-import { Request, Response } from 'express';
+import express, { Request, Response, Application } from 'express';
+import bodyParser from "body-parser";
+import morgan from "morgan";
+import mongoose from "mongoose";
+import cors from "cors";
 
-const app = express();
-const {
-    PORT = 3000,
-} = process.env;
-
-
-app.get('/', (req: Request, res: Response) => {
-    res.send({
-        message: "Welcome Boilerplate",
-    });
-});
-
-if (require.main === module) {
-    app.listen(PORT, () => {
-        console.log("Listening on " + PORT);
-    });
+// prevent env var on production
+if(process.env.NODE_ENV !== "production"){
+    require("dotenv").config();
 }
 
-export default app;
+const app: Application = express();
+const port: number  = +(process.env.PORT || 3000);
+
+const server = app.listen(port, (): void => {
+    console.log(`Listenning on ${port}`);
+});
+
+export default server;
+
