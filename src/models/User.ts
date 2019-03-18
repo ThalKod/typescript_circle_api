@@ -4,7 +4,8 @@ import bcrypt from "bcrypt";
 export interface IUser extends Document{
     email: string,
     username: string,
-    password: string
+    password: string,
+    comparePassword: (val1:string, val2: (err:Error, val2: boolean) => void) => void
 }
 
 const userSchema = new Schema({
