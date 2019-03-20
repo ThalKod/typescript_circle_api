@@ -38,3 +38,18 @@ export const signUp = (req: Request, res: Response, next: NextFunction) => {
         });
     });
 };
+
+export const signIn = (req: Request, res: Response, next:NextFunction) => {
+    const jwtToken = createJwtToken(req.user, "refreshToken");
+
+    User.findById(req.user.id)
+        .then((rUser: IUser | null) => {
+            if(rUser){
+                const { email, username } = rUser;
+                return res.json({ user: {email, username}, token: `jwt ${jwtToken}`});
+            }
+        })
+        .catch(err => next(err));
+};
+
+
