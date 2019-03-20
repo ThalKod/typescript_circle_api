@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import _ from "lodash";
-import { Request, NextFunction, Response} from "express";
+import { Request, NextFunction, Response } from "express";
 
 import { User, IUser } from "../models/User";
 
@@ -52,4 +52,33 @@ export const signIn = (req: Request, res: Response, next:NextFunction) => {
         .catch(err => next(err));
 };
 
+export const getToken = (req: Request, res: Response, next: NextFunction) => {
+    if(!req.headers.authorization) return res.status(403).send({"error": true, "message": 'No token provided.'});
+
+    const token: string = req.headers.authorization.substring(4);
+
+    if(token){
+        if(process.env.JWT_REFRESH_TOKEN_SECRET){
+            jwt.verify(token, process.env.JWT_REFRESH_TOKEN_SECRET, (err: Error, decoded: any) => {
+                if(err)
+                    return res.status(401).json({"error": true, "message": 'Unauthorized access.' });
+
+                User.findById(decoded.user.id)
+                    .then((rUser: IUser | null) => {
+                        if(rUser){
+                            const jwtToken = createJwtToken(rUser, "accessToken");
+                            res.json({ token: `jwt ${jwtToken}` });
+                        }
+                    })
+                    .catch(err => next(err));
+                // return false;
+            })
+        }else{
+            return res.status(403).send({
+                "error": true,
+                "message": 'No token provided.'
+            });
+        }
+    }
+};
 
