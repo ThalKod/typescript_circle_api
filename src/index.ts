@@ -6,6 +6,7 @@ import cors from "cors";
 
 import auth from "./routes/auth";
 import user from "./routes/user";
+import upload from "./routes/upload";
 
 // prevent env var on production
 if(process.env.NODE_ENV !== "production"){
@@ -31,6 +32,7 @@ mongoose.connect(db , { useNewUrlParser: true });
 if(process.env.API_BASE_URL){
     app.use(process.env.API_BASE_URL, auth);
     app.use(process.env.API_BASE_URL, user);
+    app.use(process.env.API_BASE_URL, upload);
 }
 
 const server = app.listen(port, (): void => {
