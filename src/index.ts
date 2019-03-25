@@ -18,7 +18,6 @@ require("./services/passport");
 
 const app: Application = express();
 const port: number  = +(process.env.PORT || 3080);
-const db: string = process.env.DB_URL || "mongodb://localhost:27017/circle";
 
 // App Setting
 app.use(morgan("combined"));
@@ -26,7 +25,8 @@ app.use(bodyParser.json({ type: "*/*"}));
 app.use(cors());
 
 // Db Setting
-mongoose.connect(db , { useNewUrlParser: true });
+if(process.env.DB_URL)
+    mongoose.connect(process.env.DB_URL , { useNewUrlParser: true });
 
 // Api Routes
 if(process.env.API_BASE_URL){
