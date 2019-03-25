@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import mongoose from "mongoose";
 import cors from "cors";
+import path from "path";
 
 import auth from "./routes/auth";
 import user from "./routes/user";

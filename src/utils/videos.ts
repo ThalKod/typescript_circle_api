@@ -2,8 +2,8 @@ import ffmpeg from "fluent-ffmpeg";
 import path from "path";
 import { IVideo } from "../models/Video";
 
-interface result {
-    error: boolean,
+export interface result {
+    error?: boolean,
     duration?: number,
     msg?: string,
     pathToScreenshot?: string
@@ -19,7 +19,7 @@ const getDuration = (url: string, callback: callback) =>{
 };
 
 const takeScreenshot = (video: IVideo, duration: number, callback: callback) => {
-    const pathToScreenshot = path.join(__dirname, "../data", video.handle);
+    const pathToScreenshot = path.join(__dirname, "data", video.handle);
     let filename: string;
     const proc = ffmpeg(video.url)
         .on('filenames', (filenames) => {
@@ -39,7 +39,7 @@ const takeScreenshot = (video: IVideo, duration: number, callback: callback) => 
 
 // process video by taking a getting a video duration and a default screenshot
 const processVideo = (video: IVideo) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve: ({}: result) => void, reject) => {
         getDuration(video.url, (res: result) => {
             if(res.error) reject(res.msg);
             const duration = res.duration;

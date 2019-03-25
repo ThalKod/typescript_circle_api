@@ -9,6 +9,10 @@ module.exports = {
   entry: './src/index.ts',
   mode: NODE_ENV,
   target: 'node',
+  node: {
+    __filename: false,
+    __dirname: false
+  },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'index.js'
