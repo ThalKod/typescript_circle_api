@@ -1,4 +1,4 @@
-import { Schema, Document, model, Model } from "mongoose";
+import { Schema, Document, model, Model, Types } from "mongoose";
 
 export interface IVideo extends Document{
     name: string,
@@ -7,7 +7,7 @@ export interface IVideo extends Document{
     url: string,
     duration: number,
     size: number,
-    author: Schema.Types.ObjectId,
+    author: Types.ObjectId,
     defaultCoverPhoto: string,
     description: string,
     tags: { id: string, text: string}[],
