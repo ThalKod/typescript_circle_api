@@ -26,3 +26,11 @@ export const getDefaultImageCoverById = (req:Request, res:Response) => {
         })
         .catch(err => res.send({ error: true, msg: err}))
 };
+
+export const updateVideo = (req:Request, res:Response) => {
+    Video.findByIdAndUpdate(req.params.id, req.body)
+        .then(() => res.send({ error: false }) )
+        .catch(err => {
+            res.send({ error: true, msg: err})
+        })
+};
