@@ -8,6 +8,7 @@ import path from "path";
 import auth from "./routes/auth";
 import user from "./routes/user";
 import upload from "./routes/upload";
+import check from "./routes/check";
 
 // prevent env var on production
 if(process.env.NODE_ENV !== "production"){
@@ -34,6 +35,7 @@ if(process.env.API_BASE_URL){
     app.use(process.env.API_BASE_URL, auth);
     app.use(process.env.API_BASE_URL, user);
     app.use(process.env.API_BASE_URL, upload);
+    app.use(process.env.API_BASE_URL, check);
 }
 
 const server = app.listen(port, (): void => {
