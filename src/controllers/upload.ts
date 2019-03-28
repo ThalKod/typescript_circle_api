@@ -12,7 +12,6 @@ export const saveVideo = (req: Request, res: Response) => {
         .then((result) => {
             const { duration, pathToScreenshot } = result;
             if(duration && pathToScreenshot){
-                console.log(duration, pathToScreenshot);
                 video.duration = duration;
                 video.defaultCoverPhoto = pathToScreenshot;
 
