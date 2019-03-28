@@ -13,3 +13,16 @@ export const getBasicVideoInfoById = (req:Request, res:Response) => {
       })
       .catch(err => res.send({ error: true, msg: err}))
 };
+
+export const getDefaultImageCoverById = (req:Request, res:Response) => {
+    Video.findById(req.params.id)
+        .then((rVideo: IVideo | null) => {
+            if(!rVideo) return res.send({ error: true, msg: "No Video"});
+            fs.readFile(rVideo.defaultCoverPhoto, "base64", (err, base64) => {
+                if(err) return console.log("err",err);
+                const data = `data:image/png;base64, ${base64}`;
+                res.send({ error: false, coverPhoto: data});
+            });
+        })
+        .catch(err => res.send({ error: true, msg: err}))
+};
