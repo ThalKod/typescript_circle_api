@@ -34,3 +34,15 @@ export const updateVideo = (req:Request, res:Response) => {
             res.send({ error: true, msg: err})
         })
 };
+
+export const getRecommended = (req: Request, res: Response) => {
+    Video.find()
+        .sort({viewCount: -1})
+        .limit(8)
+        .then((rVideos: IVideo[]) => {
+            res.send({error: false, videos: rVideos})
+        })
+        .catch(err => {
+            res.send({error: true, msg: err});
+        });
+};
