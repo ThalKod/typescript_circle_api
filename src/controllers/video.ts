@@ -57,3 +57,44 @@ export const getVideos = async (req: Request, res: Response) => {
         .then((rVideos: IVideo[]) => res.send({ error: false, videos: rVideos}))
         .catch(err => res.send({ error: true, msg: err }));
 };
+
+export const getVideosListByUserId = (req:Request, res:Response) => {
+    const { id } = req.params;
+    const { limit, offset } = req.query;
+
+    if(!id || !limit || !offset) return res.send({ error: true, msg: "Please provide the correct params"});
+
+    Video.find({ author: id})
+        .sort({ createdAt: -1 })
+        .skip(parseInt(offset))
+        .limit(parseInt(limit))
+        .then((videos: IVideo[]) => res.send({ error:false,  videos }))
+        .catch(err => res.send({ error: false, msg: err}));
+};
+
+export const getSimilarVideosById = (req:Request, res:Response) => {
+    const { id } = req.params;
+    if(!id) return res.send({ error: true, msg: "Please provide a video id"});
+
+    Video.findById(id)
+        .then((video: IVideo | null) => {
+            if(!video) return res.send({ error: true, msg: "Video Not Found"});
+            const tags: {}[] = video.tags.map(({ text }) => text);
+            Video.find({ "tags.text": {"$in": [ ...tags]}, _id: {"$ne": video.id}})
+                .then((rVideo: IVideo[]) => res.send({ error: false, videos: rVideo}))
+                .catch(err => res.send({ error: true, msg: err}));
+        })
+        .catch(err => res.send({ error: true, msg: err}));
+};
+
+export const getVideoById = (req:Request, res:Response) => {
+    const { id } = req.params;
+
+    Video.findById(id)
+        .then((video: IVideo | null) => {
+            if(!video) return res.send({ error: true, msg: "Video Not Found"});
+            res.send({ error: false, video });
+        })
+        .catch(err => res.send({ error: true, msg: err}));
+};
+
