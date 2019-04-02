@@ -3,7 +3,8 @@ import {
     getDefaultImageCoverById,
     getBasicVideoInfoById,
     updateVideo,
-    getRecommended } from "../controllers/video";
+    getRecommended,
+    getVideos } from "../controllers/video";
 import { requireAuth } from "../middlewares/auth";
 import { isVideoOwner } from "../middlewares/ownership";
 
@@ -18,6 +19,9 @@ router.get("/video/cover/default/:id", getDefaultImageCoverById);
 
 // For now we just fetch the eight most watched video... as recommended
 router.get("/video/list/recommended/", getRecommended);
+
+router.get("/video/list", getVideos); // With /video/list?limit=10&offset=5
+
 
 router.put("/video/:id", requireAuth, isVideoOwner, updateVideo);
 

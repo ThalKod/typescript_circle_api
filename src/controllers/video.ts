@@ -46,3 +46,14 @@ export const getRecommended = (req: Request, res: Response) => {
             res.send({error: true, msg: err});
         });
 };
+
+export const getVideos = async (req: Request, res: Response) => {
+    const { limit, offset } = req.query;
+
+    Video.find()
+        .sort({ createdAt: -1 })
+        .skip(parseInt(offset))
+        .limit(parseInt(limit))
+        .then((rVideos: IVideo[]) => res.send({ error: false, videos: rVideos}))
+        .catch(err => res.send({ error: true, msg: err }));
+};
