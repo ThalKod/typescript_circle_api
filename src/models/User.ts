@@ -5,7 +5,8 @@ export interface IUser extends Document{
     email: string,
     username: string,
     password: string,
-    comparePassword: (val1:string, val2: (err:Error, val2: boolean) => void) => void
+    comparePassword: (val1:string, val2: (err:Error, val2: boolean) => void) => void,
+    subscribersCount: number
 }
 
 const userSchema = new Schema({
@@ -19,7 +20,8 @@ const userSchema = new Schema({
         unique: true,
         lowercase: true
     },
-    password: String
+    password: String,
+    subscribersCount: Number
 });
 
 userSchema.pre<IUser>("save", function(next){
