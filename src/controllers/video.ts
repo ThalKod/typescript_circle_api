@@ -98,3 +98,22 @@ export const getVideoById = (req:Request, res:Response) => {
         .catch(err => res.send({ error: true, msg: err}));
 };
 
+export const searchVideosByText = (req:Request, res:Response) => {
+    const { query } = req.body;
+    const { limit, offset } = req.query;
+
+    if(!limit || !offset) return res.send({ error: true, msg: "Please provide the correct params"});
+
+    Video.find({$text: {$search: query}})
+        .sort({ createdAt: -1 })
+        .skip(parseInt(offset))
+        .limit(parseInt(limit))
+        .then((rVideos: IVideo[]) => {
+            if(rVideos.length <= 0)
+                return res.send({ error: false, videos: { found: false, videos: rVideos }});
+
+            return res.send({ error: false, videos: {found: true, videos: rVideos }});
+        })
+        .catch(err => res.send({ error: true, msg: err}));
+};
+

@@ -7,7 +7,8 @@ import {
     getVideos,
     getVideosListByUserId,
     getSimilarVideosById,
-    getVideoById } from "../controllers/video";
+    getVideoById,
+    searchVideosByText } from "../controllers/video";
 import { requireAuth } from "../middlewares/auth";
 import { isVideoOwner } from "../middlewares/ownership";
 
@@ -33,3 +34,4 @@ router.get("/video/:id", getVideoById);
 
 router.put("/video/:id", requireAuth, isVideoOwner, updateVideo);
 
+router.post("/video/search", searchVideosByText);
