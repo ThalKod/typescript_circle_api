@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="15f593b4-3da6-4d4b-afb0-e90d54e4f788" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/index.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/__mock__/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/__mock__/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/__mock__/videos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/__mock__/videos.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/routes/auth.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/routes/auth.test.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,17 +34,17 @@
           <entry key="env" value="6" />
           <entry key="gitignore" value="2" />
           <entry key="js" value="10" />
-          <entry key="json" value="10" />
-          <entry key="ts" value="48" />
+          <entry key="json" value="11" />
+          <entry key="ts" value="49" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="6" />
-          <entry key="JSON" value="9" />
+          <entry key="JSON" value="10" />
           <entry key="JavaScript" value="10" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="TypeScript" value="48" />
+          <entry key="TypeScript" value="49" />
           <entry key="tsconfig" value="1" />
         </counts>
       </usages-collector>
@@ -53,7 +53,7 @@
           <entry key="gitignore" value="37" />
           <entry key="js" value="280" />
           <entry key="json" value="43" />
-          <entry key="ts" value="7458" />
+          <entry key="ts" value="7656" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -61,7 +61,7 @@
           <entry key="JSON" value="43" />
           <entry key="JavaScript" value="280" />
           <entry key="PLAIN_TEXT" value="37" />
-          <entry key="TypeScript" value="7458" />
+          <entry key="TypeScript" value="7656" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -73,17 +73,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/routes/auth.test.ts">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/tests/routes/auth.test.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="32" selection-start-column="32" selection-end-column="32" />
+            <state relative-caret-position="226">
+              <caret line="50" column="7" lean-forward="true" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/__mock__/users.ts">
+        <entry file="file://$PROJECT_DIR$/src/models/User.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tests/__mock__/users.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="69">
               <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
@@ -91,8 +103,8 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/__mock__/videos.ts">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tests/__mock__/videos.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
@@ -103,7 +115,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-344">
+            <state relative-caret-position="23">
               <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
@@ -150,9 +162,10 @@
         <option value="$PROJECT_DIR$/src/controllers/comment.ts" />
         <option value="$PROJECT_DIR$/src/routes/comment.ts" />
         <option value="$PROJECT_DIR$/src/index.ts" />
-        <option value="$PROJECT_DIR$/tests/routes/auth.test.ts" />
         <option value="$PROJECT_DIR$/tests/__mock__/users.ts" />
         <option value="$PROJECT_DIR$/tests/__mock__/videos.ts" />
+        <option value="$PROJECT_DIR$/tests/routes/auth.test.ts" />
+        <option value="$PROJECT_DIR$/src/tests/routes/auth.test.ts" />
       </list>
     </option>
   </component>
@@ -198,17 +211,13 @@
             <path>
               <item name="CircleVideo_ts_API" type="b2602c69:ProjectViewProjectNode" />
               <item name="CircleVideo_ts_API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CircleVideo_ts_API" type="b2602c69:ProjectViewProjectNode" />
               <item name="CircleVideo_ts_API" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="__mock__" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CircleVideo_ts_API" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CircleVideo_ts_API" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -228,6 +237,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/" />
     </key>
   </component>
@@ -263,18 +273,18 @@
       <workItem from="1553784084044" duration="2608000" />
       <workItem from="1554224538382" duration="1761000" />
       <workItem from="1554476813089" duration="1558000" />
-      <workItem from="1555433356756" duration="718000" />
+      <workItem from="1555433356756" duration="1795000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26669000" />
+    <option name="totallyTimeSpent" value="27746000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20084566" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20084566" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -287,7 +297,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32923833" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.25061426" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.33169532" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -409,20 +419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/User.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/user.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -508,31 +504,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-344">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/routes/auth.test.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" selection-start-column="32" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/__mock__/users.ts">
+    <entry file="file://$PROJECT_DIR$/src/tests/__mock__/users.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
           <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/__mock__/videos.ts">
+    <entry file="file://$PROJECT_DIR$/src/tests/__mock__/videos.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/User.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/routes/auth.test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="50" column="7" lean-forward="true" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
