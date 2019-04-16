@@ -15,7 +15,6 @@ const createJwtToken = (user: IUser, type: string) => {
 };
 
 export const signUp = (req: Request, res: Response, next: NextFunction) => {
-    console.log(req.body);
     const { email, password, username } = req.body;
 
     if(!email || !password || !username){
@@ -34,7 +33,7 @@ export const signUp = (req: Request, res: Response, next: NextFunction) => {
         user.save((err, rUser) => {
             if(err) return next(err);
             const jwtToken = createJwtToken(rUser, "refreshToken");
-            return res.json({ user: { email, username }, token: `jwt ${jwtToken}`});
+            return res.json({ user: { email, username, _id: rUser.id }, token: `jwt ${jwtToken}`});
         });
     });
 };
@@ -45,8 +44,8 @@ export const signIn = (req: Request, res: Response, next:NextFunction) => {
     User.findById(req.user.id)
         .then((rUser: IUser | null) => {
             if(rUser){
-                const { email, username } = rUser;
-                return res.json({ user: {email, username}, token: `jwt ${jwtToken}`});
+                const { email, username, _id } = rUser;
+                return res.json({ user: {email, username, _id }, token: `jwt ${jwtToken}`});
             }
         })
         .catch(err => next(err));

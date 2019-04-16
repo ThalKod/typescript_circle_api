@@ -21,7 +21,10 @@ const userSchema = new Schema({
         lowercase: true
     },
     password: String,
-    subscribersCount: Number
+    subscribersCount: {
+        type: Number,
+        default: 0
+    }
 });
 
 userSchema.pre<IUser>("save", function(next){

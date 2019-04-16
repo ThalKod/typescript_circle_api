@@ -10,8 +10,8 @@
     "build": "webpack",
     "start:dev": "NODE_ENV=development webpack",
     "run:dev": "NODE_ENV=development nodemon build/index.js",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest --runInBand",
+    "test:watch": "NODE_ENV=test jest --watch --runInBand"
   },
   "dependencies": {
     "@types/bcrypt": "^3.0.0",
