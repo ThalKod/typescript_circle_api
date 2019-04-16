@@ -1,16 +1,9 @@
 import request from "supertest";
-import { Application, Response } from "express";
 
 import { IUser, User } from "../../models/User";
 import users from "../__mock__/users";
 
 import app from "../../index";
-
-// let app;
-
-/*beforeAll(async () => {
-    app = require("../../index");
-});*/
 
 afterAll(async () => {
     await app.close()
@@ -24,7 +17,7 @@ describe("POST /api/v0/signup", () => {
     it("should signup a user ", async () => {
         const res = await request(app).post("/api/v0/signup").send(users[0]);
         expect(res.status).toBe(200);
-        const rUser = await User.find({email: users[0].email });
+        const rUser: IUser[] = await User.find({email: users[0].email });
         expect(rUser[0].email).toBe(users[0].email);
         expect(res.body.token).toContain("jwt");
     });
