@@ -42,8 +42,27 @@ export const getUserNameById = (req:Request, res:Response) => {
 
     User.findById(id)
         .then((rUser: IUser | null) => {
-            if(!rUser) return res.send({ error: true, msg: "no user record"});
+            if(!rUser) return res.send({ error: true, msg: "No user record"});
             res.send({ error: false, username: rUser.username})
         })
         .catch(err => res.send({error: true, msg: err}));
+};
+
+export const addSubscribersByUserId = (req:Request, res:Response) => {
+    const { id } = req.params;
+    if(!id) return res.send({ error: true, msg: "Please provide a user id"});
+
+    User.findById(id)
+        .then((rUser: IUser | null ) => {
+            if(!rUser) return res.send({ error: true, msg: "No user record"});
+
+            rUser.subscribersCount += 1;
+            rUser.subscribers.push(req.user.id);
+            rUser.save();
+
+            return res.send({ error: false });
+        })
+        .catch((err) => {
+            res.send({ error: true, msg: err})
+        });
 };

@@ -1,4 +1,4 @@
-import { Schema, Document, Model, model } from "mongoose";
+import { Schema, Document, Model, model, Types } from "mongoose";
 import bcrypt from "bcrypt";
 
 export interface IUser extends Document{
@@ -6,7 +6,8 @@ export interface IUser extends Document{
     username: string,
     password: string,
     comparePassword: (val1:string, val2: (err:Error, val2: boolean) => void) => void,
-    subscribersCount: number
+    subscribersCount: number,
+    subscribers: Types.ObjectId[]
 }
 
 const userSchema = new Schema({
@@ -24,7 +25,13 @@ const userSchema = new Schema({
     subscribersCount: {
         type: Number,
         default: 0
-    }
+    },
+    subscribers: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ]
 });
 
 userSchema.pre<IUser>("save", function(next){
