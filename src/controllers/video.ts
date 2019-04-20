@@ -117,3 +117,17 @@ export const searchVideosByText = (req:Request, res:Response) => {
         .catch(err => res.send({ error: true, msg: err}));
 };
 
+export const addViewByVideoId = (req:Request, res:Response) => {
+    const { id } = req.params;
+    if(!id) return res.send({ error: true, msg: "Please provide a video id"});
+
+    Video.findById(id)
+        .then(rVideo => {
+            if(!rVideo) return res.send({ error: false, msg: "No video records"});
+
+            rVideo.viewCount += 1;
+            rVideo.save();
+            return res.send({ error: false });
+        })
+        .catch(err => res.send({ error: true, msg: err }));
+};
