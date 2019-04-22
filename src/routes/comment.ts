@@ -1,7 +1,12 @@
 import express from "express";
 
 import { requireAuth } from "../middlewares/auth";
-import { addCommentToVideo, getCommentCountOfVideo, getVideoComment } from "../controllers/comment";
+import {
+    addCommentToVideo,
+    getCommentCountOfVideo,
+    getVideoComment,
+    addReplyToCommentById
+} from "../controllers/comment";
 const router = express.Router();
 
 
@@ -15,6 +20,11 @@ router.get("/comment/count/video/:id", getCommentCountOfVideo);
 
 // Get all comments of a videos
 router.get("/comment/video/:id", getVideoComment);
+
+router.post("/comment/reply/:id", requireAuth, addReplyToCommentById);
+
+
+export default router;
 
 
 

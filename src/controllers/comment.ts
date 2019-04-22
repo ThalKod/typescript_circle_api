@@ -46,3 +46,29 @@ export const getVideoComment = (req:Request, res:Response) => {
         })
         .catch(err => res.send({ error: true, msg: err}));
 };
+
+export const addReplyToCommentById = (req:Request, res:Response) => {
+    const { id } = req.params;
+    if(!id) res.send({ error: true, msg: "Please provide comment id "});
+
+    // @ts-ignore
+    const comment: IComment = {
+        text: req.body.commentText,
+        author:  req.user.id,
+        isReply: true
+    };
+
+    Comment.findById(id)
+        .then(async (rComment: IComment | null) => {
+            if(!rComment) return res.send({ error: true, msg: "No Comment record"});
+
+            comment.video = rComment.video;
+            const newComment = await Comment.create(comment);
+
+            rComment.reply.push(newComment);
+            rComment.save();
+
+            return res.send({ error: false, comment: newComment });
+        })
+        .catch(err => console.log(err));
+};
