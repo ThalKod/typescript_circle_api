@@ -12,7 +12,8 @@ const commentSchema = new Schema({
     text: String,
     author: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
+        autopopulate: true
     },
     video: {
         type: Schema.Types.ObjectId,
@@ -21,7 +22,8 @@ const commentSchema = new Schema({
     reply: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Comment"
+            ref: "Comment",
+            autopopulate: true
         }
     ],
     isReply: {
@@ -29,5 +31,7 @@ const commentSchema = new Schema({
         default: false
     }
 });
+
+commentSchema.plugin(require("mongoose-autopopulate"));
 
 export const Comment:Model<IComment> = model("Comment", commentSchema);

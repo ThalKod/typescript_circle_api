@@ -19,3 +19,15 @@ export const checkUsername = (req:Request, res:Response) => {
         })
         .catch(err => res.send({ error: true, msg: err }));
 };
+
+export const checkIfUserIsSubscriber = (req:Request, res:Response) => {
+    const { id } = req.params;
+    if(!id) return res.send({ error: true, msg: "please provide the correct params "});
+
+    User.findOne({ _id: id, subscribers: req.user.id })
+        .then((rUser: IUser | null) => {
+            if(rUser) return res.send({ error: false, subscribed: true});
+            res.send({ error: false, subscribed: false });
+        })
+        .catch(err => res.send({ error: false, msg: err}));
+};

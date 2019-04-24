@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { IComment, Comment } from "../models/Comment";
+import {IUser} from "../models/User";
 
 export const addCommentToVideo = (req:Request, res:Response) => {
     const { id } = req.params;
@@ -63,12 +64,16 @@ export const addReplyToCommentById = (req:Request, res:Response) => {
             if(!rComment) return res.send({ error: true, msg: "No Comment record"});
 
             comment.video = rComment.video;
-            const newComment = await Comment.create(comment);
+            const newComment: IComment = await Comment.create(comment);
 
-            rComment.reply.push(newComment);
-            rComment.save();
+            newComment.populate("author", "username", (err, result) => {
+                if(err) return res.send({ error: true, msg: err});
 
-            return res.send({ error: false, comment: newComment });
+                rComment.reply.push(newComment);
+                rComment.save();
+
+                return res.send({ error: false, comment: newComment });
+            });
         })
         .catch(err => console.log(err));
 };

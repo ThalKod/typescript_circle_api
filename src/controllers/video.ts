@@ -19,7 +19,7 @@ export const getDefaultImageCoverById = (req:Request, res:Response) => {
         .then((rVideo: IVideo | null) => {
             if(!rVideo) return res.send({ error: true, msg: "No Video"});
             fs.readFile(rVideo.defaultCoverPhoto, "base64", (err, base64) => {
-                if(err) res.send({ error: true, msg: err });
+                if(err) return res.send({ error: true, msg: err });
                 const data:string = `data:image/png;base64, ${base64}`;
                 res.send({ error: false, coverPhoto: data});
             });

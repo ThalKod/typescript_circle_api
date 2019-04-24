@@ -6,7 +6,9 @@ import {
     getVideoCountByUserId,
     getSubscribersCountByUserId,
     getUserNameById,
-    addSubscribersByUserId } from "../controllers/user";
+    addSubscribersByUserId,
+    getUserSubscriberListById
+} from "../controllers/user";
 
 const router: Router = express.Router();
 
@@ -24,6 +26,9 @@ router.get("/user/:id/name", getUserNameById);
 
 // Add a subscriber to user
 router.post("/user/:id/subscriber", requireAuth, addSubscribersByUserId);
+
+router.get("/user/:id/subscriber", getUserSubscriberListById);
+
 
 export default router;
 
