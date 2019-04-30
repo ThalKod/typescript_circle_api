@@ -12,9 +12,9 @@ import video from "./routes/video";
 import comment from "./routes/comment";
 
 // prevent env var on production
-if(process.env.NODE_ENV !== "production"){
+// if(process.env.NODE_ENV !== "production"){
     require("dotenv").config();
-}
+// }
 
 // Initialise passport
 require("./services/passport");
