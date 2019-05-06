@@ -3,6 +3,12 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import mongoose from "mongoose";
 import cors from "cors";
+import path from "path";
+
+// prevent env var on production
+if(process.env.NODE_ENV !== "production"){
+    require("dotenv").config();
+}
 
 import auth from "./routes/auth";
 import user from "./routes/user";
@@ -10,11 +16,6 @@ import upload from "./routes/upload";
 import check from "./routes/check";
 import video from "./routes/video";
 import comment from "./routes/comment";
-
-// prevent env var on production
-// if(process.env.NODE_ENV !== "production"){
-    require("dotenv").config();
-// }
 
 // Initialise passport
 require("./services/passport");
@@ -39,6 +40,13 @@ if(process.env.API_BASE_URL){
     app.use(process.env.API_BASE_URL, check);
     app.use(process.env.API_BASE_URL, video);
     app.use(process.env.API_BASE_URL, comment);
+}
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../build")));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../build/index.html'));
+    })
 }
 
 const server = app.listen(port, (): void => {
