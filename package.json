@@ -22,7 +22,7 @@
     "@types/fluent-ffmpeg": "^2.1.9",
     "@types/lodash": "^4.14.123",
     "@types/mongodb": "^3.1.22",
-    "@types/mongoose": "^5.3.22",
+    "@types/mongoose": "^5.5.1",
     "@types/morgan": "^1.7.35",
     "@types/passport": "^1.0.0",
     "@types/passport-jwt": "^3.0.1",
