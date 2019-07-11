@@ -35,7 +35,7 @@
     "ffmpeg": "^0.0.4",
     "filestack-js": "^2.1.0",
     "fluent-ffmpeg": "^2.1.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "mongoose": "^5.5.13",
     "mongoose-autopopulate": "^0.9.1",
     "morgan": "^1.9.1",
