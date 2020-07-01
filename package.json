@@ -54,7 +54,7 @@
     "supertest": "^4.0.2",
     "ts-jest": "^24.0.2",
     "ts-loader": "^5.4.4",
-    "typescript": "^3.3.3333",
+    "typescript": "^3.9.6",
     "webpack-node-externals": "^1.7.2",
     "webpack-shell-plugin": "^0.5.0"
   }
