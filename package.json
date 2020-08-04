@@ -53,7 +53,7 @@
     "nodemon": "^1.18.10",
     "supertest": "^4.0.2",
     "ts-jest": "^24.0.2",
-    "ts-loader": "^5.4.4",
+    "ts-loader": "^8.0.2",
     "typescript": "^3.3.3333",
     "webpack-node-externals": "^1.7.2",
     "webpack-shell-plugin": "^0.5.0"
