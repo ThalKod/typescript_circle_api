@@ -30,7 +30,7 @@
     "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
-    "dotenv": "^7.0.0",
+    "dotenv": "^9.0.1",
     "express": "^4.16.4",
     "ffmpeg": "^0.0.4",
     "filestack-js": "^2.1.0",
